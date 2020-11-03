@@ -8,15 +8,12 @@ package painters;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -28,8 +25,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -65,28 +60,18 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
-import static oracle.jrockit.jfr.events.Bits.intValue;
 
 /**
  * <h1>Painters App</h1>
@@ -177,7 +162,7 @@ public class Painters extends Application {
     public static File filepath;
 
     Canvas[] multiple = new Canvas[7];
-    
+
     ScrollPane sp = new ScrollPane();
 
     /**
@@ -205,12 +190,11 @@ public class Painters extends Application {
         GridPane maincanvas = new GridPane();
         GridPane mainpicture = new GridPane();
         GridPane bottom = new GridPane();
-        
-        
+
         // Canvas width and height
         //canvas.setWidth(650);
         //canvas.setHeight(650);
-        for (int p = 0; p < 3; p++) {
+        for (int p = 0; p < 7; p++) {
             multiple[p] = new Canvas();
             multiple[p].setHeight(650);
             multiple[p].setWidth(650);
@@ -225,7 +209,7 @@ public class Painters extends Application {
          * of the Scroll Pane method which will then have the scroll bars
          * attached to the canvas.
          */
-        
+
         Group root = new Group();
         sp = new ScrollPane(canvas);
         sp.setPrefSize(650, 650);
@@ -238,13 +222,21 @@ public class Painters extends Application {
         System.out.println(canvas.getClass());
         // create a tabpane 
         TabPane tabpane = new TabPane();
-        Tab tab1 = new Tab("Planes", new Label("Show all planes available"));
-        Tab tab2 = new Tab("Cars", new Label("Show all cars available"));
-        Tab tab3 = new Tab("Boats", new Label("Show all boats available"));
+        Tab tab1 = new Tab("Image 1");
+        Tab tab2 = new Tab("Image 2");
+        Tab tab3 = new Tab("Image 3");
+        Tab tab4 = new Tab("Image 4");
+        Tab tab5 = new Tab("Image 5");
+        Tab tab6 = new Tab("Image 6");
+        Tab tab7 = new Tab("Image 7");
 
         tabpane.getTabs().add(tab1);
         tabpane.getTabs().add(tab2);
         tabpane.getTabs().add(tab3);
+        tabpane.getTabs().add(tab4);
+        tabpane.getTabs().add(tab5);
+        tabpane.getTabs().add(tab6);
+        tabpane.getTabs().add(tab7);
 
         tab1.setOnSelectionChanged(new EventHandler<Event>() {
             @Override
@@ -305,8 +297,78 @@ public class Painters extends Application {
             }
         }
         );
-
-        
+        tab4.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (tab4.isSelected()) {
+                    canvas = multiple[3];
+                    gc = canvas.getGraphicsContext2D();
+                    sp = new ScrollPane(canvas);
+                    sp.setPrefSize(650, 650);
+                    sp.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                    sp.setFitToWidth(true);
+                    sp.setFitToHeight(true);
+                    sp.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    sp.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    maincanvas.add(sp, 2, 2);
+                }
+            }
+        }
+        );
+        tab5.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (tab5.isSelected()) {
+                    canvas = multiple[4];
+                    gc = canvas.getGraphicsContext2D();
+                    sp = new ScrollPane(canvas);
+                    sp.setPrefSize(650, 650);
+                    sp.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                    sp.setFitToWidth(true);
+                    sp.setFitToHeight(true);
+                    sp.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    sp.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    maincanvas.add(sp, 2, 2);
+                }
+            }
+        }
+        );
+        tab6.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (tab6.isSelected()) {
+                    canvas = multiple[5];
+                    gc = canvas.getGraphicsContext2D();
+                    sp = new ScrollPane(canvas);
+                    sp.setPrefSize(650, 650);
+                    sp.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                    sp.setFitToWidth(true);
+                    sp.setFitToHeight(true);
+                    sp.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    sp.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    maincanvas.add(sp, 2, 2);
+                }
+            }
+        }
+        );
+        tab7.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event t) {
+                if (tab7.isSelected()) {
+                    canvas = multiple[6];
+                    gc = canvas.getGraphicsContext2D();
+                    sp = new ScrollPane(canvas);
+                    sp.setPrefSize(650, 650);
+                    sp.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                    sp.setFitToWidth(true);
+                    sp.setFitToHeight(true);
+                    sp.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    sp.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.ALWAYS);
+                    maincanvas.add(sp, 2, 2);
+                }
+            }
+        }
+        );
 
         /**
          * The main scene is being created that holds all the grid pane elements
@@ -884,7 +946,7 @@ public class Painters extends Application {
          * that is chosen with the resulting shape, it will get all the values
          * that are declared once that button was clicked
          */
-        canvas.setOnMousePressed(e -> {
+        multiple[2].setOnMousePressed(e -> {
             if (Draw.isSelected()) {
                 //Draw tool
                 Tools.setText("Pencil is active");
@@ -893,7 +955,7 @@ public class Painters extends Application {
                 gc.lineTo(e.getX(), e.getY());
             } else if (Eraser.isSelected()) {
                 //Eraser Tool
-                Tools.setText("Eraser  is active");
+                Tools.setText("Eraser is active");
                 gc.setStroke(Color.WHITE);
                 //start new path to postition
                 gc.beginPath();
@@ -901,25 +963,25 @@ public class Painters extends Application {
                 gc.stroke();
             } else if (Line.isSelected()) {
                 //Line tool
-                Tools.setText("Line  is active");
+                Tools.setText("Line is active");
                 gc.setStroke(cpLine.getValue());
                 line.setStartX(e.getX());
                 line.setStartY(e.getY());
 
             } else if (Rect.isSelected()) {
                 //Rectangle tool
-                Tools.setText("Rectanglw  is active");
+                Tools.setText("Rectangle is active");
                 gc.setStroke(cpLine.getValue());
                 gc.setFill(cpFill.getValue());
                 rect.setX(e.getX());
                 rect.setY(e.getY());
             } else if (Square.isSelected()) {
                 //Square tool
-                Tools.setText("Square  is active");
+                Tools.setText("Square is active");
                 gc.setStroke(cpLine.getValue());
                 gc.setFill(cpFill.getValue());
-                square.setX(e.getX());
-                square.setY(e.getY());
+                rect.setX(e.getX());
+                rect.setY(e.getY());
             } else if (Circle.isSelected()) {
                 //Circle tool
                 Tools.setText("Circle  is active");
@@ -935,14 +997,14 @@ public class Painters extends Application {
                 y0 = e.getY();
             } else if (Ellipse.isSelected()) {
                 //Ellipse tool
-                Tools.setText("Ellipse  is active");
+                Tools.setText("Ellipse is active");
                 gc.setStroke(cpLine.getValue());
                 gc.setFill(cpFill.getValue());
                 elps.setCenterX(e.getX());
                 elps.setCenterY(e.getY());
             } else if (Text.isSelected()) {
                 //Text tool
-                Tools.setText("Text  is active");
+                Tools.setText("Text is active");
                 gc.setLineWidth(1);
                 gc.setFont(Font.font(slider.getValue()));
                 gc.setStroke(cpLine.getValue());
@@ -975,7 +1037,7 @@ public class Painters extends Application {
          * Mouse Dragged event is being used to drag each selected shape to show
          * the process of the shape that the user wants
          */
-        canvas.setOnMouseDragged(e -> {
+        multiple[2].setOnMouseDragged(e -> {
 
             if (Draw.isSelected()) {
                 gc.lineTo(e.getX(), e.getY());
@@ -1011,21 +1073,21 @@ public class Painters extends Application {
                 gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 
             } else if (Square.isSelected()) {
-                //Rectangle is selected
-
+               //Square is selected
                 gc.drawImage(tmpSnap, 0, 0);
 
-                square.setWidth(Math.abs((e.getX() - square.getX())));
-                square.setHeight(Math.abs((e.getY() - square.getY())));
-                if (square.getX() > e.getX()) {
-                    square.setX(e.getX());
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
 
                 }
-                if (square.getY() > e.getY()) {
-                    square.setY(e.getY());
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
                 }
-                gc.fillRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
-                gc.strokeRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 
             } else if (Triangle.isSelected()) {
 
@@ -1109,7 +1171,809 @@ public class Painters extends Application {
          * shape that the user has chosen. Each shape has their own method to
          * display the shape.
          */
-        canvas.setOnMouseReleased(e -> {
+        multiple[2].setOnMouseReleased(e -> {
+            //Draw is seleceted 
+            tmpSnap = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+            canvas.snapshot(null, tmpSnap);
+            if (Draw.isSelected()) {
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+                gc.closePath();
+            } else if (Eraser.isSelected()) {
+                // Eraser is selected
+                gc.closePath();
+            } else if (Line.isSelected()) {
+                //Line is selected 
+                line.setEndX(e.getX());
+                line.setEndY(e.getY());
+                gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+
+                undoHistory.push(new Line(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY()));
+            } else if (Rect.isSelected()) {
+                //Rectangle is selected
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+                undoHistory.push(new Rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight()));
+
+            } else if (Square.isSelected()) {
+                //Rectangle is selected
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+                undoHistory.push(new Rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight()));
+
+            } else if (Triangle.isSelected()) {
+                double point3X = e.getX();
+                double point3Y = e.getY();
+                double point1X = (x0 + point3X) / 2;
+                double point1Y = y0;
+                double point2Y = point3Y;
+                double point2X = x0;
+
+                double[] xpoints = {point1X, point2X, point3X};
+                double[] ypoints = {point1Y, point2Y, point3Y};
+
+                gc.fillPolygon(xpoints, ypoints, 3);
+                gc.strokePolygon(xpoints, ypoints, 3);
+
+                undoHistory.push(new Polygon(e.getX(), e.getY()));
+                redoHistory.push(new Polygon(e.getX(), e.getY()));
+            } else if (Circle.isSelected()) {
+                //Circle is selected 
+                circ.setRadius((Math.abs(e.getX() - circ.getCenterX()) + Math.abs(e.getY() - circ.getCenterY())) / 2);
+
+                if (circ.getCenterX() > e.getX()) {
+                    circ.setCenterX(e.getX());
+                }
+                if (circ.getCenterY() > e.getY()) {
+                    circ.setCenterY(e.getY());
+                }
+
+                gc.fillOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+                gc.strokeOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+
+                undoHistory.push(new Circle(circ.getCenterX(), circ.getCenterY(), circ.getRadius()));
+            } else if (Ellipse.isSelected()) {
+                //Ellipse is selected 
+                elps.setRadiusX(Math.abs(e.getX() - elps.getCenterX()));
+                elps.setRadiusY(Math.abs(e.getY() - elps.getCenterY()));
+
+                if (elps.getCenterX() > e.getX()) {
+                    elps.setCenterX(e.getX());
+                }
+                if (elps.getCenterY() > e.getY()) {
+                    elps.setCenterY(e.getY());
+                }
+
+                gc.strokeOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+                gc.fillOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+
+                undoHistory.push(new Ellipse(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY()));
+            } else if (Polysides.isSelected()) {
+                numSides = (int) polyint.getValue();
+                double radius = ((Math.abs(e.getX() - polyStartX) + Math.abs(e.getY() - polyStartY)) / 2);
+                //checks if it is dragged the other direction
+                if (polyStartX > e.getX()) {
+                    polyStartX = e.getX();
+                }
+                if (polyStartY > e.getY()) {
+                    polyStartY = e.getY();
+                }
+                //new array for sides
+                double[] xSides = new double[numSides];
+                double[] ySides = new double[numSides];
+                //apply sides to polygon
+                for (int i = 0; i < numSides; i++) {
+                    xSides[i] = radius * Math.cos(2 * i * Math.PI / numSides) + polyStartX;
+                    ySides[i] = radius * Math.sin(2 * i * Math.PI / numSides) + polyStartY;
+                }
+                //draw polygon
+                gc.strokePolygon(xSides, ySides, numSides);
+                gc.fillPolygon(xSides, ySides, numSides);
+                //push snap for undo
+            }//Select
+            else if (Select.isSelected()) {
+                selRect.setWidth(Math.abs(e.getX() - selRect.getX()));
+                selRect.setHeight(Math.abs(e.getY() - selRect.getY()));
+                //checks if it is dragged the other direction
+                if (selRect.getX() > e.getX()) {
+                    selRect.setX(e.getX());
+                }
+                if (selRect.getY() > e.getY()) {
+                    selRect.setY(e.getY());
+                }
+                //get a new snap
+                WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+                canvas.snapshot(null, writableImage);
+                //fill selImg with new selection
+                gc.fillRect(selRect.getX(), selRect.getY(), selRect.getWidth(), selRect.getHeight());
+                PixelReader pixelReader = writableImage.getPixelReader();
+                selImg = new WritableImage(pixelReader, (int) selRect.getX(), (int) selRect.getY(), (int) selRect.getWidth(), (int) selRect.getHeight());
+                //clear selected area
+                gc.clearRect(selRect.getX(), selRect.getY(), selRect.getWidth(), selRect.getHeight());
+                //enable move button
+                Move.setDisable(false);
+                //push snap for undo
+            } //Copy
+            else if (Copys.isSelected()) {
+                selRect.setWidth(Math.abs(e.getX() - selRect.getX()));
+                selRect.setHeight(Math.abs(e.getY() - selRect.getY()));
+                //checks if it is dragged the other direction
+                if (selRect.getX() > e.getX()) {
+                    selRect.setX(e.getX());
+                }
+                if (selRect.getY() > e.getY()) {
+                    selRect.setY(e.getY());
+                }
+                //get a new snap
+                WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+                canvas.snapshot(null, writableImage);
+                //fill selImg with new copy area
+                PixelReader pixelReader = writableImage.getPixelReader();
+                selImg = new WritableImage(pixelReader, (int) selRect.getX(), (int) selRect.getY(), (int) selRect.getWidth(), (int) selRect.getHeight());
+                //enable move button
+                Move.setDisable(false);
+                //push snap for undo
+            } else if (Move.isSelected()) {
+                gc.drawImage(selImg, e.getX(), e.getY());
+            }
+            Saving = false;
+            redoHistory.clear();
+            Shape lastUndo = undoHistory.lastElement();
+            lastUndo.setFill(gc.getFill());
+            lastUndo.setStroke(gc.getStroke());
+            lastUndo.setStrokeWidth(gc.getLineWidth());
+
+        });
+        
+        multiple[1].setOnMousePressed(e -> {
+            if (Draw.isSelected()) {
+                //Draw tool
+                Tools.setText("Pencil is active");
+                gc.setStroke(cpLine.getValue());
+                gc.beginPath();
+                gc.lineTo(e.getX(), e.getY());
+            } else if (Eraser.isSelected()) {
+                //Eraser Tool
+                Tools.setText("Eraser is active");
+                gc.setStroke(Color.WHITE);
+                //start new path to postition
+                gc.beginPath();
+                gc.moveTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Line.isSelected()) {
+                //Line tool
+                Tools.setText("Line is active");
+                gc.setStroke(cpLine.getValue());
+                line.setStartX(e.getX());
+                line.setStartY(e.getY());
+
+            } else if (Rect.isSelected()) {
+                //Rectangle tool
+                Tools.setText("Rectangle is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                rect.setX(e.getX());
+                rect.setY(e.getY());
+            } else if (Square.isSelected()) {
+                //Square tool
+                Tools.setText("Square is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                rect.setX(e.getX());
+                rect.setY(e.getY());
+            } else if (Circle.isSelected()) {
+                //Circle tool
+                Tools.setText("Circle  is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                circ.setCenterX(e.getX());
+                circ.setCenterY(e.getY());
+            } else if (Triangle.isSelected()) {
+                Tools.setText("Triangle is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                x0 = e.getX();
+                y0 = e.getY();
+            } else if (Ellipse.isSelected()) {
+                //Ellipse tool
+                Tools.setText("Ellipse is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                elps.setCenterX(e.getX());
+                elps.setCenterY(e.getY());
+            } else if (Text.isSelected()) {
+                //Text tool
+                Tools.setText("Text is active");
+                gc.setLineWidth(1);
+                gc.setFont(Font.font(slider.getValue()));
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                gc.fillText(text.getText(), e.getX(), e.getY());
+                gc.strokeText(text.getText(), e.getX(), e.getY());
+            } //Select
+            else if (Select.isSelected()) {
+                //preliminary writing setup
+                //start selection at press
+                selRect.setX(e.getX());
+                selRect.setY(e.getY());
+                Tools.setText("Select");
+            } else if (Polysides.isSelected()) {
+                //preliminary writing setup
+                //start polygon at press
+                polyStartX = e.getX();
+                polyStartY = e.getY();
+                Tools.setText("Polygon");
+            } else if (Copys.isSelected()) {
+                //preliminary writing setup
+                //start selection at press
+                selRect.setX(e.getX());
+                selRect.setY(e.getY());
+                Tools.setText("Copy");
+            }
+            Saving = false;
+        });
+        /**
+         * Mouse Dragged event is being used to drag each selected shape to show
+         * the process of the shape that the user wants
+         */
+        multiple[1].setOnMouseDragged(e -> {
+
+            if (Draw.isSelected()) {
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Eraser.isSelected()) {
+                double lineWidth = gc.getLineWidth();
+                gc.setStroke(Color.WHITE);
+                //line to mouse
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Line.isSelected()) {
+                //Line is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                line.setEndX(e.getX());
+                line.setEndY(e.getY());
+                gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+
+            } else if (Rect.isSelected()) {
+                //Rectangle is selected
+                gc.drawImage(tmpSnap, 0, 0);
+
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+            } else if (Square.isSelected()) {
+               //Square is selected
+                gc.drawImage(tmpSnap, 0, 0);
+
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+            } else if (Triangle.isSelected()) {
+
+                gc.drawImage(tmpSnap, 0, 0);
+                double point3X = e.getX();
+                double point3Y = e.getY();
+                double point1X = (x0 + point3X) / 2;
+                double point1Y = y0;
+                double point2Y = point3Y;
+                double point2X = x0;
+
+                double[] xpoints = {point1X, point2X, point3X};
+                double[] ypoints = {point1Y, point2Y, point3Y};
+
+                gc.fillPolygon(xpoints, ypoints, 3);
+                gc.strokePolygon(xpoints, ypoints, 3);
+
+            } else if (Circle.isSelected()) {
+                //Circle is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                circ.setRadius((Math.abs(e.getX() - circ.getCenterX()) + Math.abs(e.getY() - circ.getCenterY())) / 2);
+
+                if (circ.getCenterX() > e.getX()) {
+                    circ.setCenterX(e.getX());
+                }
+                if (circ.getCenterY() > e.getY()) {
+                    circ.setCenterY(e.getY());
+                }
+                gc.fillOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+                gc.strokeOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+
+            } else if (Ellipse.isSelected()) {
+                //Ellipse is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                elps.setRadiusX(Math.abs(e.getX() - elps.getCenterX()));
+                elps.setRadiusY(Math.abs(e.getY() - elps.getCenterY()));
+
+                if (elps.getCenterX() > e.getX()) {
+                    elps.setCenterX(e.getX());
+                }
+                if (elps.getCenterY() > e.getY()) {
+                    elps.setCenterY(e.getY());
+                }
+
+                gc.fillOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+                gc.strokeOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+
+            } else if (Polysides.isSelected()) {
+                //take snapshot for shape preview
+                gc.drawImage(tmpSnap, 0, 0);
+                numSides = (int) polyint.getValue();
+                double radius = ((Math.abs(e.getX() - polyStartX) + Math.abs(e.getY() - polyStartY)) / 2);
+                //checks if it is dragged the other direction
+                if (polyStartX > e.getX()) {
+                    polyStartX = e.getX();
+                }
+                if (polyStartY > e.getY()) {
+                    polyStartY = e.getY();
+                }
+                //new array for sides
+                double[] xSides = new double[numSides];
+                double[] ySides = new double[numSides];
+                //create sides
+                for (int i = 0; i < numSides; i++) {
+                    xSides[i] = radius * Math.cos(2 * i * Math.PI / numSides) + polyStartX;
+                    ySides[i] = radius * Math.sin(2 * i * Math.PI / numSides) + polyStartY;
+                }
+
+                gc.strokePolygon(xSides, ySides, numSides);
+                gc.fillPolygon(xSides, ySides, numSides);
+            } //Move
+            else if (Move.isSelected()) {
+                gc.drawImage(tmpSnap, 0, 0);
+                gc.drawImage(selImg, e.getX(), e.getY());
+                Tools.setText("Move/Paste");
+            }
+            Saving = false;
+        });
+        /**
+         * Mouse Released method was used on the canvas to present the final
+         * shape that the user has chosen. Each shape has their own method to
+         * display the shape.
+         */
+        multiple[1].setOnMouseReleased(e -> {
+            //Draw is seleceted 
+            tmpSnap = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+            canvas.snapshot(null, tmpSnap);
+            if (Draw.isSelected()) {
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+                gc.closePath();
+            } else if (Eraser.isSelected()) {
+                // Eraser is selected
+                gc.closePath();
+            } else if (Line.isSelected()) {
+                //Line is selected 
+                line.setEndX(e.getX());
+                line.setEndY(e.getY());
+                gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+
+                undoHistory.push(new Line(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY()));
+            } else if (Rect.isSelected()) {
+                //Rectangle is selected
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+                undoHistory.push(new Rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight()));
+
+            } else if (Square.isSelected()) {
+                //Rectangle is selected
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+                undoHistory.push(new Rectangle(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight()));
+
+            } else if (Triangle.isSelected()) {
+                double point3X = e.getX();
+                double point3Y = e.getY();
+                double point1X = (x0 + point3X) / 2;
+                double point1Y = y0;
+                double point2Y = point3Y;
+                double point2X = x0;
+
+                double[] xpoints = {point1X, point2X, point3X};
+                double[] ypoints = {point1Y, point2Y, point3Y};
+
+                gc.fillPolygon(xpoints, ypoints, 3);
+                gc.strokePolygon(xpoints, ypoints, 3);
+
+                undoHistory.push(new Polygon(e.getX(), e.getY()));
+                redoHistory.push(new Polygon(e.getX(), e.getY()));
+            } else if (Circle.isSelected()) {
+                //Circle is selected 
+                circ.setRadius((Math.abs(e.getX() - circ.getCenterX()) + Math.abs(e.getY() - circ.getCenterY())) / 2);
+
+                if (circ.getCenterX() > e.getX()) {
+                    circ.setCenterX(e.getX());
+                }
+                if (circ.getCenterY() > e.getY()) {
+                    circ.setCenterY(e.getY());
+                }
+
+                gc.fillOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+                gc.strokeOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+
+                undoHistory.push(new Circle(circ.getCenterX(), circ.getCenterY(), circ.getRadius()));
+            } else if (Ellipse.isSelected()) {
+                //Ellipse is selected 
+                elps.setRadiusX(Math.abs(e.getX() - elps.getCenterX()));
+                elps.setRadiusY(Math.abs(e.getY() - elps.getCenterY()));
+
+                if (elps.getCenterX() > e.getX()) {
+                    elps.setCenterX(e.getX());
+                }
+                if (elps.getCenterY() > e.getY()) {
+                    elps.setCenterY(e.getY());
+                }
+
+                gc.strokeOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+                gc.fillOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+
+                undoHistory.push(new Ellipse(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY()));
+            } else if (Polysides.isSelected()) {
+                numSides = (int) polyint.getValue();
+                double radius = ((Math.abs(e.getX() - polyStartX) + Math.abs(e.getY() - polyStartY)) / 2);
+                //checks if it is dragged the other direction
+                if (polyStartX > e.getX()) {
+                    polyStartX = e.getX();
+                }
+                if (polyStartY > e.getY()) {
+                    polyStartY = e.getY();
+                }
+                //new array for sides
+                double[] xSides = new double[numSides];
+                double[] ySides = new double[numSides];
+                //apply sides to polygon
+                for (int i = 0; i < numSides; i++) {
+                    xSides[i] = radius * Math.cos(2 * i * Math.PI / numSides) + polyStartX;
+                    ySides[i] = radius * Math.sin(2 * i * Math.PI / numSides) + polyStartY;
+                }
+                //draw polygon
+                gc.strokePolygon(xSides, ySides, numSides);
+                gc.fillPolygon(xSides, ySides, numSides);
+                //push snap for undo
+            }//Select
+            else if (Select.isSelected()) {
+                selRect.setWidth(Math.abs(e.getX() - selRect.getX()));
+                selRect.setHeight(Math.abs(e.getY() - selRect.getY()));
+                //checks if it is dragged the other direction
+                if (selRect.getX() > e.getX()) {
+                    selRect.setX(e.getX());
+                }
+                if (selRect.getY() > e.getY()) {
+                    selRect.setY(e.getY());
+                }
+                //get a new snap
+                WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+                canvas.snapshot(null, writableImage);
+                //fill selImg with new selection
+                gc.fillRect(selRect.getX(), selRect.getY(), selRect.getWidth(), selRect.getHeight());
+                PixelReader pixelReader = writableImage.getPixelReader();
+                selImg = new WritableImage(pixelReader, (int) selRect.getX(), (int) selRect.getY(), (int) selRect.getWidth(), (int) selRect.getHeight());
+                //clear selected area
+                gc.clearRect(selRect.getX(), selRect.getY(), selRect.getWidth(), selRect.getHeight());
+                //enable move button
+                Move.setDisable(false);
+                //push snap for undo
+            } //Copy
+            else if (Copys.isSelected()) {
+                selRect.setWidth(Math.abs(e.getX() - selRect.getX()));
+                selRect.setHeight(Math.abs(e.getY() - selRect.getY()));
+                //checks if it is dragged the other direction
+                if (selRect.getX() > e.getX()) {
+                    selRect.setX(e.getX());
+                }
+                if (selRect.getY() > e.getY()) {
+                    selRect.setY(e.getY());
+                }
+                //get a new snap
+                WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+                canvas.snapshot(null, writableImage);
+                //fill selImg with new copy area
+                PixelReader pixelReader = writableImage.getPixelReader();
+                selImg = new WritableImage(pixelReader, (int) selRect.getX(), (int) selRect.getY(), (int) selRect.getWidth(), (int) selRect.getHeight());
+                //enable move button
+                Move.setDisable(false);
+                //push snap for undo
+            } else if (Move.isSelected()) {
+                gc.drawImage(selImg, e.getX(), e.getY());
+            }
+            Saving = false;
+            redoHistory.clear();
+            Shape lastUndo = undoHistory.lastElement();
+            lastUndo.setFill(gc.getFill());
+            lastUndo.setStroke(gc.getStroke());
+            lastUndo.setStrokeWidth(gc.getLineWidth());
+
+        });
+        
+        multiple[0].setOnMousePressed(e -> {
+            if (Draw.isSelected()) {
+                //Draw tool
+                Tools.setText("Pencil is active");
+                gc.setStroke(cpLine.getValue());
+                gc.beginPath();
+                gc.lineTo(e.getX(), e.getY());
+            } else if (Eraser.isSelected()) {
+                //Eraser Tool
+                Tools.setText("Eraser is active");
+                gc.setStroke(Color.WHITE);
+                //start new path to postition
+                gc.beginPath();
+                gc.moveTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Line.isSelected()) {
+                //Line tool
+                Tools.setText("Line is active");
+                gc.setStroke(cpLine.getValue());
+                line.setStartX(e.getX());
+                line.setStartY(e.getY());
+
+            } else if (Rect.isSelected()) {
+                //Rectangle tool
+                Tools.setText("Rectangle is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                rect.setX(e.getX());
+                rect.setY(e.getY());
+            } else if (Square.isSelected()) {
+                //Square tool
+                Tools.setText("Square is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                rect.setX(e.getX());
+                rect.setY(e.getY());
+            } else if (Circle.isSelected()) {
+                //Circle tool
+                Tools.setText("Circle  is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                circ.setCenterX(e.getX());
+                circ.setCenterY(e.getY());
+            } else if (Triangle.isSelected()) {
+                Tools.setText("Triangle is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                x0 = e.getX();
+                y0 = e.getY();
+            } else if (Ellipse.isSelected()) {
+                //Ellipse tool
+                Tools.setText("Ellipse is active");
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                elps.setCenterX(e.getX());
+                elps.setCenterY(e.getY());
+            } else if (Text.isSelected()) {
+                //Text tool
+                Tools.setText("Text is active");
+                gc.setLineWidth(1);
+                gc.setFont(Font.font(slider.getValue()));
+                gc.setStroke(cpLine.getValue());
+                gc.setFill(cpFill.getValue());
+                gc.fillText(text.getText(), e.getX(), e.getY());
+                gc.strokeText(text.getText(), e.getX(), e.getY());
+            } //Select
+            else if (Select.isSelected()) {
+                //preliminary writing setup
+                //start selection at press
+                selRect.setX(e.getX());
+                selRect.setY(e.getY());
+                Tools.setText("Select");
+            } else if (Polysides.isSelected()) {
+                //preliminary writing setup
+                //start polygon at press
+                polyStartX = e.getX();
+                polyStartY = e.getY();
+                Tools.setText("Polygon");
+            } else if (Copys.isSelected()) {
+                //preliminary writing setup
+                //start selection at press
+                selRect.setX(e.getX());
+                selRect.setY(e.getY());
+                Tools.setText("Copy");
+            }
+            Saving = false;
+        });
+        /**
+         * Mouse Dragged event is being used to drag each selected shape to show
+         * the process of the shape that the user wants
+         */
+        multiple[0].setOnMouseDragged(e -> {
+
+            if (Draw.isSelected()) {
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Eraser.isSelected()) {
+                double lineWidth = gc.getLineWidth();
+                gc.setStroke(Color.WHITE);
+                //line to mouse
+                gc.lineTo(e.getX(), e.getY());
+                gc.stroke();
+            } else if (Line.isSelected()) {
+                //Line is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                line.setEndX(e.getX());
+                line.setEndY(e.getY());
+                gc.strokeLine(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+
+            } else if (Rect.isSelected()) {
+                //Rectangle is selected
+                gc.drawImage(tmpSnap, 0, 0);
+
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+            } else if (Square.isSelected()) {
+               //Square is selected
+                gc.drawImage(tmpSnap, 0, 0);
+
+                rect.setWidth(Math.abs((e.getX() - rect.getX())));
+                rect.setHeight(Math.abs((e.getY() - rect.getY())));
+
+                if (rect.getX() > e.getX()) {
+                    rect.setX(e.getX());
+
+                }
+                if (rect.getY() > e.getY()) {
+                    rect.setY(e.getY());
+                }
+                gc.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+                gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+
+            } else if (Triangle.isSelected()) {
+
+                gc.drawImage(tmpSnap, 0, 0);
+                double point3X = e.getX();
+                double point3Y = e.getY();
+                double point1X = (x0 + point3X) / 2;
+                double point1Y = y0;
+                double point2Y = point3Y;
+                double point2X = x0;
+
+                double[] xpoints = {point1X, point2X, point3X};
+                double[] ypoints = {point1Y, point2Y, point3Y};
+
+                gc.fillPolygon(xpoints, ypoints, 3);
+                gc.strokePolygon(xpoints, ypoints, 3);
+
+            } else if (Circle.isSelected()) {
+                //Circle is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                circ.setRadius((Math.abs(e.getX() - circ.getCenterX()) + Math.abs(e.getY() - circ.getCenterY())) / 2);
+
+                if (circ.getCenterX() > e.getX()) {
+                    circ.setCenterX(e.getX());
+                }
+                if (circ.getCenterY() > e.getY()) {
+                    circ.setCenterY(e.getY());
+                }
+                gc.fillOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+                gc.strokeOval(circ.getCenterX(), circ.getCenterY(), circ.getRadius(), circ.getRadius());
+
+            } else if (Ellipse.isSelected()) {
+                //Ellipse is selected 
+                gc.drawImage(tmpSnap, 0, 0);
+                elps.setRadiusX(Math.abs(e.getX() - elps.getCenterX()));
+                elps.setRadiusY(Math.abs(e.getY() - elps.getCenterY()));
+
+                if (elps.getCenterX() > e.getX()) {
+                    elps.setCenterX(e.getX());
+                }
+                if (elps.getCenterY() > e.getY()) {
+                    elps.setCenterY(e.getY());
+                }
+
+                gc.fillOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+                gc.strokeOval(elps.getCenterX(), elps.getCenterY(), elps.getRadiusX(), elps.getRadiusY());
+
+            } else if (Polysides.isSelected()) {
+                //take snapshot for shape preview
+                gc.drawImage(tmpSnap, 0, 0);
+                numSides = (int) polyint.getValue();
+                double radius = ((Math.abs(e.getX() - polyStartX) + Math.abs(e.getY() - polyStartY)) / 2);
+                //checks if it is dragged the other direction
+                if (polyStartX > e.getX()) {
+                    polyStartX = e.getX();
+                }
+                if (polyStartY > e.getY()) {
+                    polyStartY = e.getY();
+                }
+                //new array for sides
+                double[] xSides = new double[numSides];
+                double[] ySides = new double[numSides];
+                //create sides
+                for (int i = 0; i < numSides; i++) {
+                    xSides[i] = radius * Math.cos(2 * i * Math.PI / numSides) + polyStartX;
+                    ySides[i] = radius * Math.sin(2 * i * Math.PI / numSides) + polyStartY;
+                }
+
+                gc.strokePolygon(xSides, ySides, numSides);
+                gc.fillPolygon(xSides, ySides, numSides);
+            } //Move
+            else if (Move.isSelected()) {
+                gc.drawImage(tmpSnap, 0, 0);
+                gc.drawImage(selImg, e.getX(), e.getY());
+                Tools.setText("Move/Paste");
+            }
+            Saving = false;
+        });
+        /**
+         * Mouse Released method was used on the canvas to present the final
+         * shape that the user has chosen. Each shape has their own method to
+         * display the shape.
+         */
+        multiple[0].setOnMouseReleased(e -> {
             //Draw is seleceted 
             tmpSnap = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
             canvas.snapshot(null, tmpSnap);
