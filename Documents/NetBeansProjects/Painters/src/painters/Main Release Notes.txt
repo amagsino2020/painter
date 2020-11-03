@@ -1,0 +1,264 @@
+Alluras' Pain(t) Version 3.0.0 - 11/01/2020
+
+New features:
+
+  * Autosaving works
+  * Tab feature works
+ 
+Known Issues:
+
+  * The release notes pop up into the computer and not on a new window
+  * Have to double click on canvas first before doing anything else
+  * Tab graphics work up till image 3. Have to use pencil first
+    when switching tabs for it to work.
+ 
+
+Links:
+
+  * Github: https://github.com/amagsino2020/painter
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 2.2.3 - 10/07/2020
+
+New features:
+
+  * 7 image tabs are below the menubar that work
+  * Auto save button turns autosave on or off and occurs
+    every 15 seconds and will print out "autosave" onto the
+    command line
+
+Known Issues:
+
+  * The release notes pop up into the computer and not on a new window
+
+
+Links:
+
+  * Github: https://github.com/amagsino2020/painter
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 2.1.3 - 09/25/2020
+
+New features:
+
+  * A triangle button for the user to draw a triangle
+  * The user can see the process of the shape they are drawing
+    by dragging the shape to see what the shape looks like before 
+    creating the shape
+  * There are 2 unit tests
+  * JavaDoc commenting was implemented into the code
+  * The user can save in an alternative file format than the one
+    that was the original for the image
+  * The software shall have the ability to select and move a piece of  
+  image (not just delete, move!).  This is the Big Feature (but not
+  the last... that's deliberate!).  This should leave a "void" 
+  behind ("empty" rectangle")
+
+Known Issues:
+
+  * Drag feature does drag but is broken by drawing multiple copies
+    of the selected shape while dragging
+  * The release notes pop up into the computer and not on a new window
+  * Select and move will just clear the image. Does not work at the 
+	
+
+Expected Next Sprint:
+
+  * The software shall allow the user to specify the number of 
+  sides a polygon will have and draw it.  
+  * One more Unit test 
+  * The software shall have a timer that allows for autosave. 	
+  * The timer's countdown shall be optionally (as in some way to 
+  choose on/off) visible to the user. 
+  * The software shall allow at least 7 images to be open in tabs similar
+  to a web browser. 
+  * The software shall have at least 4 buttons or other controls/etc.
+   with tool tips.  
+  * The software shall have a logging capability that is threaded; 
+  the "active tool" and filename 
+
+Links:
+
+  * Github: In progress
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 2.0.3 - 09/21/2020
+
+New features:
+
+  * Text label on both Fill and Line color (# is the code for each color)
+  * Color "grabber"/dropper tool
+  * Resize canvas (and resulting image) and zoom in/out.
+  * Multiple Image files for open and save
+  * The software shall have an eraser tool.
+  * The software shall have a redo button, along with an undo button.  
+  * Help menu items has a Notes item that can open the release notes
+  * User can see what button they are on and can select no tool 
+  * Text button 
+  * "Smart save"
+  * Information about how to use the tool in the about item under
+    the Help menu Item
+
+Known Issues:
+
+  * The release notes pop up into the computer and not on a new window
+
+Expected Next Sprint:
+
+  * The software shall drawn an additional shape of your choice.
+  * The software shall have drawing tools will let the user see what
+  they are doing as they are doing it (so: drawing a rectangle should 
+  show me the rectangle 'in progress').  [If it already does this, you're good.]
+  * The software shall have the ability to select and move a piece of  
+  image (not just delete, move!).  This is the Big Feature (but not
+  the last... that's deliberate!).  This should leave a "void" 
+  behind ("empty" rectangle")
+  * The software shall allow the user to specify the number of 
+  sides a polygon will have and draw it.  
+  * The software shall have at least 3 unit tests.
+  * The software shall have a timer that allows for autosave. 
+  * The timer's countdown shall be optionally (as in some way to 
+  choose on/off) visible to the user. 
+  * The code shall have some JavaDoc commenting
+  * The software shall have the ability to save in an alternative file format 
+  than the one that was the original for the image.
+
+Links:
+
+  * Github: In progress
+
+
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 2.0.2 - 09/11/2020
+
+New features:
+
+  * A pencil tool that lets you free hand draw
+  * Silder button is functioning with a text label to know what opacity you have
+  * Colorpicker works with now a Fill Color and Line Color chooser for shapes
+    with text labels
+  * Can draw Square, Rectangle, Ellipse, Circle, and a Line tool
+  * A tool section is desiganted to the six different tools on the top right corner
+  * Keyboard UI controls work for the Open, Save, File, Undo, and Escape
+  * Undo button is working using a stack
+  * Save button is working and can save an image as a png
+  * Zoom button works by typing in an integer to zoom 
+
+Known Issues:
+
+  * Text Label for the color fill and color line does not work just tells 
+    which one is which
+  * Open Multiple Images button does not work
+  * Color Dropper does not work
+
+Expected Next Sprint:
+
+  * A text label describing the color.
+  * Color "grabber"/dropper tool.
+  * Resize canvas (and resulting image) and zoom in/out.
+  * Multiple Image files for open and save
+  * "Smart save"
+  * The software shall allow you add text to your image. (The better to meme with, 
+  perhaps....)
+  * The software shall drawn an additional shape of your choice.
+  * The software shall have an eraser tool.
+  * The software shall have a redo button, along with an undo button.  
+  * The software will indicate which tool is selected and allow for no tool to be selected.
+  * The software shall have drawing tools will let the user see what they are doing as they are
+  doing it (so: drawing a rectangle should show me the rectangle 'in progress').   
+  [If it already does this, you're good.]
+  * Your help should provide access to the release notes and some information about how to use the tool.
+  * The software shall have the ability to select and move a piece of image (not just delete, move!).  
+  This is the Big Feature (but not the last... that's deliberate!).  This should leave a "void" behind
+  ("empty" rectangle").
+  * The software shall allow the user to specify the number of sides a polygon
+  will have and draw it.  
+
+
+Links:
+
+  * Github: In progress
+
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 1.0.1 - 09/04/2020
+
+New features:
+
+  * Color Picker runs to have the user choose a color
+  * Color Picker works and allows the user to change the color to display onto the 
+    canvas
+  * Silder bar that will control the width of the color
+  * Slide bar has labels and ticks to display how big/small the paint brush can be
+  * Save as button has file choosers
+  * A horizontal scroll bar & vertical scroll bar has been implemented onto the canvas
+    and can be used when the window becomes small
+  * About button under the Help item works by displaying an alert message to the user
+    on the various shortcuts that the program has
+  * The user can draw a line on the canvas and on a displayed image
+  * The line can also change color by using the color picker
+  * When an image is displayed it is resized to fit the canvas
+
+Known issues:
+  
+  * Silder does not work
+  * Save button does not work
+  * In order to use save the user has to use the save as button and then can save the image
+  * The slider button is all the way at the bottom left and the color picker is at the 
+    top left and will eventually be placed vertically from each other 
+
+Expected Next Sprint:
+
+  * Save button will work
+  * A pencil tool (freehand drawing of a line) in addition to drawing a straight line
+  * Width and color selection should work for both pencil and line tools.
+  * Draw a square, a rectangle, an ellipse, and a circle, with fill    (don't forget color for inside and the edge of the shape).
+  * "Smart" save.
+  * Multiple image file types (open and save) - at least 3.
+  * A toolbar for drawing controls.
+  * Keyboard UI controls (control S/Save, alt F/File menu, etc)
+  * A text label describing the color.
+  * Color "grabber"/dropper tool.
+  * Resize canvas (and resulting image) and zoom in/out.
+  * Undo using a stack (not the built in library)
+  * Transparency handling if applicable.  [Reach goal, optional for 90+ NOT required but
+ cool/good 
+
+Links:
+
+  * Github: In progress
+----------------------------------------------------------------------------------------
+Alluras' Pain(t) Version 1.0.0 - 08/28/2020
+
+New features:
+
+  * Menu Bar with three buttons; File, Help, and Edit
+  * File has Open, Save, SaveAs, and Exit button with shortcuts
+  * Help has About button that does not do anything
+  * Edit has Undo, Redo, Cut, Copy, and Paste all with shortcuts
+  * Open button has the "Open File" window pop up and can
+    view an image that can be put on the canvas
+  * Save As button has the "Save Image" window pop up and
+    can save the file has a new name and will 
+    create a new path for the save image to be accessed
+  * Exit button has a shortcut that can exit the whole app by
+    pressing the button or hitting Escape
+  * When choosing a file there is a File Extentsion Filter that
+    is shown to the bottom right when opening an image
+
+Known issues:
+
+  * Open file can only open save images and documents but cannot
+    open actual pictures that are imported
+
+Expected next sprint:
+
+  * have both save and save as
+  * draw a line - NOTE: that needs to save/persist/end up in 
+    the saved image (yes, people have skipped that part)
+  * your "working space" (canvas, or whatever) should resize to fit image being opened
+  * you should have scroll bars (window and canvas)
+  * control for the width of a line (doesn't need to actually influence the line, yet)
+  * have a color chooser (doesn't need to influence line yet either)
+  * have a help menu item, and help/about popup/dialog.
+
+Links:
+
+  * Github: In progress
